@@ -8,7 +8,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 /** Legacy (Parrys → Lotte Wellfood) and the three culture pillars from lotteindia.com. */
 export function HeritageStrip() {
   return (
-    <section aria-labelledby="proto-heritage-title" className="relative overflow-hidden bg-proto-cocoa py-24 text-white md:py-32">
+    <section aria-labelledby="proto-heritage-title" data-nav-theme="dark" className="mesh-cocoa grain relative overflow-hidden py-24 text-white md:py-32">
       {/* Concentric "circle of joy" arcs echoing the hero */}
       <svg aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 h-[640px] w-[640px] opacity-40" viewBox="0 0 640 640">
         {[300, 240, 180].map((r, i) => (

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
-import { Navbar } from "@/components/layout/Navbar";
+import { SiteNav } from "@/components/layout/SiteNav";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-    <Navbar />
+    <SiteNav />
     <main id="main" tabIndex={-1} className="outline-none">
     <section className="mesh-cream grain relative overflow-hidden">
       <div className="container relative z-10 flex min-h-[60vh] flex-col items-start justify-center py-24">

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Factory, Globe2, MapPin } from "lucide-react";
+import { Factory, Globe2, MapPin, Newspaper } from "lucide-react";
 import { HeritageTimeline } from "@/components/sections/HeritageTimeline";
 import { PageHero } from "@/components/sections/PageHero";
 import { ScaleMetrics } from "@/components/sections/ScaleMetrics";
 import { Reveal, RevealItem, Stagger } from "@/components/ui/Reveal";
 import { ScrollLine } from "@/components/ui/ScrollLine";
-import { coreValues, csr, groupStory, managementPrinciples, mission, valueCreation } from "@/data/company";
+import { coreValues, csr, groupStory, managementPrinciples, mission, pressCoverage, valueCreation } from "@/data/company";
 import { hubs, milestones } from "@/data/milestones";
 
 export const metadata: Metadata = {
@@ -119,6 +119,14 @@ export default function StoryPage() {
           <Reveal delay={0.1} className="space-y-4 text-ink-soft">
             <p>{groupStory.lotteGroup}</p>
             <p>{groupStory.wellfood}</p>
+            <p className="font-semibold text-noir">{groupStory.ambition}</p>
+            <ul aria-label="Lotte Group markets" className="flex flex-wrap gap-2 pt-2">
+              {groupStory.markets.map((m) => (
+                <li key={m} className="rounded-full border border-noir/15 px-3 py-1 text-sm text-noir">
+                  {m}
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>
@@ -191,7 +199,7 @@ export default function StoryPage() {
       </section>
 
       {/* CSR — lotteindia.com/csr.html */}
-      <section aria-labelledby="csr-title" className="mesh-noir grain relative overflow-hidden py-24 text-alabaster md:py-32">
+      <section aria-labelledby="csr-title" data-nav-theme="dark" className="mesh-noir grain relative overflow-hidden py-24 text-alabaster md:py-32">
         <div className="container relative z-10 grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
             <p className="eyebrow !text-lotte-light">Corporate social responsibility</p>
@@ -200,6 +208,7 @@ export default function StoryPage() {
             <p className="mt-4 text-sm text-alabaster/60">
               With {csr.partner} · Launched {csr.launched}
             </p>
+            <p className="mt-4 text-sm text-alabaster/60">{csr.frameworks}</p>
           </Reveal>
           <Stagger as="ol" className="grid gap-4 lg:col-span-6 lg:col-start-7">
             {csr.pillars.map((p, i) => (
@@ -207,6 +216,50 @@ export default function StoryPage() {
                 <span className="font-sans text-sm tabular-nums text-lotte-light">0{i + 1}</span>
                 <h3 className="mt-2 text-2xl">{p.title}</h3>
                 <p className="mt-1 text-sm text-alabaster/70">{p.body}</p>
+              </RevealItem>
+            ))}
+          </Stagger>
+          <div className="lg:col-span-12">
+            <h3 className="eyebrow !text-lotte-light">Earlier community work</h3>
+            <Stagger as="ol" className="mt-5 grid gap-px overflow-hidden rounded-3xl bg-alabaster/10 sm:grid-cols-2 lg:grid-cols-3">
+              {csr.history.map((h) => (
+                <RevealItem as="li" key={h.date} className="bg-[#1b1b1b] p-6">
+                  <p className="text-sm font-semibold tabular-nums text-lotte-light">{h.date}</p>
+                  <p className="mt-1 text-alabaster/80">{h.body}</p>
+                </RevealItem>
+              ))}
+            </Stagger>
+          </div>
+        </div>
+      </section>
+
+      {/* News & events — lotteindia.com/news-events.html */}
+      <section id="news" aria-labelledby="news-title" className="py-24 md:py-32">
+        <div className="container grid gap-12 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <p className="eyebrow">In the news · {pressCoverage.period}</p>
+            <h2 id="news-title" className="mt-4 text-display-md font-light">
+              Coffy Bite is <em className="italic text-lotte">back</em>.
+            </h2>
+            <p className="mt-6 text-ink-soft">
+              The relaunch of our cult coffee toffee made headlines in print and online across India.
+            </p>
+            <h3 className="eyebrow mt-10 !text-ink-muted">In print</h3>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {pressCoverage.print.map((p) => (
+                <li key={p} className="rounded-full border border-noir/15 px-3 py-1 text-sm">
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Stagger as="ul" className="grid gap-4 lg:col-span-6 lg:col-start-7">
+            {pressCoverage.online.map((a) => (
+              <RevealItem as="li" key={a.outlet} className="rounded-3xl bg-alabaster p-7 shadow-card ring-1 ring-noir/5">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-lotte-deep">
+                  <Newspaper className="h-4 w-4" aria-hidden="true" /> {a.outlet}
+                </p>
+                <p className="mt-3 font-serif text-2xl leading-snug">“{a.title}”</p>
               </RevealItem>
             ))}
           </Stagger>

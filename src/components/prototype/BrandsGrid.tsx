@@ -18,7 +18,7 @@ const item = {
 
 export function BrandsGrid() {
   return (
-    <section aria-labelledby="proto-brands-title" className="bg-proto-cream py-24 md:py-32">
+    <section aria-labelledby="proto-brands-title" className="mesh-ivory py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
@@ -27,7 +27,7 @@ export function BrandsGrid() {
               Six reasons India smiles.
             </h2>
           </div>
-          <Link href="/brands" className="group inline-flex items-center gap-2 text-sm font-semibold text-proto-cocoa">
+          <Link href="/brands" className="group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-proto-cocoa">
             See the full portfolio
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>

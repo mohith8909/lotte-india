@@ -21,6 +21,10 @@ export interface Product {
   /** Flavour/format cues drawn from the live copy — not invented tasting notes. */
   highlights: string[];
   variants?: string[];
+  /** Pack counts listed on the live brand page (e.g. "2", "6"). */
+  packs?: string[];
+  /** Price points stated in the live page copy (MRP per piece/pack). */
+  pricePoints?: string[];
   /** Year of launch, when the live site states it. */
   launched?: string;
   /** Only set when the live site states it (FAQ: "Lotte Choco Pie is vegetarian"). */
@@ -46,6 +50,15 @@ export const categories: Category[] = [
 
 const SITE = "https://www.lotteindia.com";
 
+/** Retailers named under "Where to buy" on choco-pie.html.
+ * TODO: Swap these search links for the official product listings the live page links to. */
+export const retailers = [
+  { name: "Amazon", href: "https://www.amazon.in/s?k=lotte+choco+pie" },
+  { name: "BigBasket", href: "https://www.bigbasket.com/ps/?q=lotte%20choco%20pie" },
+  { name: "Flipkart", href: "https://www.flipkart.com/search?q=lotte%20choco%20pie" },
+  { name: "Blinkit", href: "https://blinkit.com/s/?q=lotte%20choco%20pie" },
+] as const;
+
 export const products: Product[] = [
   // ── Pies ────────────────────────────────────────────────────────────────
   {
@@ -57,6 +70,7 @@ export const products: Product[] = [
       "Fluffy marshmallows, soft biscuits and rich choco come together to bring you India's No.1 Choco Pie. A quick, convenient and hygienic snack to relish and cherish the moment.",
     highlights: ["Fluffy marshmallow", "Soft biscuit", "Rich choco"],
     variants: ["Original", "Rich Cocoa", "Orange Pie", "Fruto Pie"],
+    packs: ["2", "4", "6", "12", "18"],
     launched: "2006",
     vegetarian: true,
     accent: "lotte",
@@ -71,6 +85,7 @@ export const products: Product[] = [
     tagline: "Rich Choco",
     description: "Burst with a milk créme signature — the richer, cocoa-forward Choco Pie.",
     highlights: ["Rich cocoa", "Milk créme"],
+    packs: ["2", "6", "12", "18"],
     launched: "2016",
     accent: "noir",
     shape: "pie",
@@ -84,6 +99,7 @@ export const products: Product[] = [
     tagline: "A citrus twist on the pie",
     description: "An orange-flavoured addition to the Lotte Choco Pie family.",
     highlights: ["Orange flavour", "Choco Pie family"],
+    packs: ["2", "6", "12", "18"],
     launched: "2022",
     accent: "blush",
     shape: "pie",
@@ -97,6 +113,7 @@ export const products: Product[] = [
     tagline: "A fruity twist on the pie",
     description: "A fruit-flavoured addition to the Lotte Choco Pie family.",
     highlights: ["Fruit flavour", "Choco Pie family"],
+    packs: ["4", "6", "12"],
     launched: "2022",
     accent: "crimson",
     shape: "pie",
@@ -138,9 +155,10 @@ export const products: Product[] = [
     category: "toffees",
     tagline: "Rich Coffee! Creamy Toffee!",
     description:
-      "A perfect blend of rich coffee and creamy toffee rolled into one stimulating, addictive experience. Whether it's a coffee or a toffee, the argument still continues — since 1987.",
-    highlights: ["Rich coffee", "Creamy toffee"],
-    variants: ["Classic", "Eclairs"],
+      "A perfect blend of rich coffee and creamy toffee rolled into one stimulating, addictive experience. For more than three decades — and five TV ads, from “Biker” to “Reunion” — India has asked: is it a coffee or a toffee?",
+    highlights: ["Rich coffee", "Creamy toffee", "Relaunched 2019"],
+    variants: ["Classic", "Eclairs", "Stick Pack"],
+    pricePoints: ["₹1", "₹5"],
     launched: "1987",
     accent: "coffee",
     shape: "toffee",
@@ -156,6 +174,7 @@ export const products: Product[] = [
     description:
       "Luscious choco encapsulated inside a soft, smooth toffee. Feel the burst of rich choco in every bite.",
     highlights: ["Soft toffee", "Choco centre"],
+    variants: ["Choco", "Milk"],
     accent: "lotte",
     shape: "toffee",
     sourceUrl: `${SITE}/lotte-eclairs.html`,
@@ -168,7 +187,7 @@ export const products: Product[] = [
     description:
       "This dairy-rich confection, supple and delicious, is fondly remembered as “the child's first toffee” — a requisite for auspicious occasions.",
     highlights: ["Dairy-rich", "Soft toffee"],
-    variants: ["Caramilk", "Caramilk Eclairs"],
+    variants: ["Soft milk toffee", "Stick Pack", "Caramilk Eclairs"],
     launched: "1982",
     accent: "sun",
     shape: "toffee",
@@ -181,6 +200,8 @@ export const products: Product[] = [
     tagline: "The rich coconut toffee",
     description: "Tiny bits of real desiccated coconut inclusions in soft, yummy toffee — pure delight in every bite.",
     highlights: ["Real desiccated coconut", "Soft toffee"],
+    variants: ["Stick Pack"],
+    pricePoints: ["₹1", "₹5"],
     accent: "blush",
     shape: "toffee",
     sourceUrl: `${SITE}/other-brands.html`,
@@ -194,6 +215,7 @@ export const products: Product[] = [
     tagline: "Milk & Butter Candy",
     description: "A duet of milk and butter that titillates your taste buds so much that you can't stop with just one.",
     highlights: ["Milk", "Butter"],
+    variants: ["Milk Toffee", "Caramel Lollipop", "Strawberry Lollipop"],
     launched: "1989",
     accent: "sun",
     shape: "jar",
@@ -206,7 +228,8 @@ export const products: Product[] = [
     tagline: "Funky Fruit Flavored Candy",
     description: "Mouthwatering, fun-filled candies in exciting tropical fruit flavours that lift your mood.",
     highlights: ["Tropical fruit flavours"],
-    variants: ["Lollipops (Blueberry, Strawberry)", "Jelly Lollipops"],
+    variants: ["Fruit candies", "Lollipops (Blueberry, Strawberry)", "Jelly Lollipops", "Gift Packs"],
+    pricePoints: ["₹5 lollipop", "₹10 lollipop"],
     accent: "crimson",
     shape: "jar",
     sourceUrl: `${SITE}/other-brands2.html`,
@@ -218,6 +241,7 @@ export const products: Product[] = [
     tagline: "Fruit Flavoured Chews",
     description: "Premium sweet and tangy, long-lasting mango-flavoured chews to indulge in.",
     highlights: ["Mango flavour", "Long-lasting chew"],
+    variants: ["Mango Fruit Chews", "Coconut Toffee", "Funky Fruit Lollipops", "Jelly Lollipops", "Gift Packs"],
     accent: "blush",
     shape: "gum",
     sourceUrl: `${SITE}/other-brands3.html`,
@@ -230,6 +254,7 @@ export const products: Product[] = [
     description:
       "Little treats for those special moments to celebrate with your loved ones — assortments, elegantly packed to suit all occasions.",
     highlights: ["Assorted confectionery", "Gift packs"],
+    variants: ["Funky Fruit candies", "Mango chews", "Gift pack assortments"],
     accent: "lotte",
     shape: "gift",
     sourceUrl: `${SITE}/other-brands1.html`,

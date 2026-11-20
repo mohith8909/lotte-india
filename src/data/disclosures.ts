@@ -63,9 +63,8 @@ export const disclosureGroups: DisclosureGroup[] = [
 
 /** Employee & statutory links that the current site puts on its homepage — moved to the footer. */
 export const utilityLinks: { label: string; detail: string; href: string }[] = [
-  // TODO: confirm the live webmail and employee-portal URLs with Lotte India IT.
-  { label: "Web Mail", detail: "Staff email login", href: `${SITE}/` },
-  { label: "Employee Portal", detail: "Payroll & performance", href: `${SITE}/` },
+  { label: "Web Mail", detail: "Staff email login", href: "https://mail.lotteindia.com/" },
+  { label: "Employee Portal", detail: "Darwinbox", href: "https://lotteindia.darwinbox.in/user/login/" },
   { label: "Form 5A — Royapettah", detail: "TNMAS000034500B", href: `${SITE}/pdf/home-page/Form5a_signed%20345B_Royapettah.pdf` },
   { label: "Form 5A — Tambaram", detail: "TBTAM000034500C", href: `${SITE}/pdf/home-page/Form5a_signed%20345C_Tambaram.pdf` },
 ];

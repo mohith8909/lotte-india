@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { LotteMark } from "@/components/brand/LotteMark";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import { company, offices, telHref } from "@/data/company";
 
 const regional = offices.filter((o) => o.kind !== "Factory");
 
 export function ProtoFooter() {
   return (
-    <footer className="bg-[#1C0E08] text-white">
+    <footer data-nav-theme="dark" className="mesh-ember grain relative text-white">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
@@ -27,6 +28,7 @@ export function ProtoFooter() {
                 </Link>
               ))}
             </nav>
+            <SocialLinks className="mt-6" />
           </div>
           <div className="lg:col-span-8">
             <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF8A8E]">Regional offices</h2>

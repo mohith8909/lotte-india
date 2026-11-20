@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ContactInquiry } from "@/components/sections/ContactInquiry";
 import { FaqAccordion } from "@/components/sections/FaqAccordion";
 import { PageHero } from "@/components/sections/PageHero";
-import { company, offices, telHref } from "@/data/company";
+import { careersContact, company, offices, telHref } from "@/data/company";
 
 export const metadata: Metadata = {
   title: "FAQ & Contact",
@@ -39,6 +39,7 @@ export default function FaqPage() {
                   { href: "#products", label: "Products" },
                   { href: "#packaging", label: "Packaging marks" },
                   { href: "#careers", label: "Careers" },
+                  { href: "#legal", label: "Website & legal" },
                   { href: "#contact", label: "Contact us" },
                 ].map((l) => (
                   <li key={l.href}>
@@ -82,6 +83,15 @@ export default function FaqPage() {
                 <Link href="/reach" className="font-semibold text-noir underline-offset-4 hover:underline">
                   All offices
                 </Link>
+              </span>
+            </p>
+            <p className="flex gap-3 text-sm text-ink-soft">
+              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-lotte" aria-hidden="true" />
+              <span>
+                Careers:{" "}
+                <a href={`mailto:${careersContact.email}`} className="font-semibold text-noir underline-offset-4 hover:underline">
+                  {careersContact.email}
+                </a>
               </span>
             </p>
           </div>

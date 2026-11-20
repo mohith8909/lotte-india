@@ -5,7 +5,7 @@ import { values } from "@/data/careers";
 
 export function CultureBand() {
   return (
-    <section aria-labelledby="culture-title" className="mesh-signature grain relative overflow-hidden py-24 text-white md:py-32">
+    <section aria-labelledby="culture-title" data-nav-theme="dark" className="mesh-signature grain relative overflow-hidden py-24 text-white md:py-32">
       <div className="container relative z-10 grid gap-14 lg:grid-cols-12">
         <Reveal className="lg:col-span-5">
           <p className="eyebrow !text-white">Grow with Lotte</p>

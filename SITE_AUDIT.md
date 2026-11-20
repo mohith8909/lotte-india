@@ -99,3 +99,56 @@ Our Brands, Grow With Lotte, Investor Centre) + floating "Enquiry" tab; HR image
 - AGM e-voting, postal ballot, financial reports and press releases: listed in the live menu, but no documents were crawled.
 - **Enquiry form endpoint** (currently simulated client-side).
 - Coffy Bite poll counts are seeded demo numbers.
+
+## 6. Data refresh (20 Nov 2026)
+
+Updated from the extracted site data file (`lotteindia_website_data.md`):
+
+- **Products:** pack counts for the four pies, price points where the page copy states them (Coffy Bite, Coconut Punch, Fruitz lollipops), and fuller variant lists. Variants include Coffy Bite Stick Pack, Eclairs Choco/Milk, the Lacto King lollipops, and the Chewits and Season's Greetings formats. Pie drawers now include a "Where to buy" panel (Amazon, BigBasket, Flipkart, Blinkit).
+  - Price points known only from image filenames (Eclairs, Caramilk, Lacto King, the Choco Pie ₹10 pack) were left out.
+- **Our Story:**
+  - Lotte Group markets and its top-10-in-Asia ambition, plus Lotte Wellfood's Korean favourites.
+  - CSR frameworks and the 2017–2018 community-work history.
+  - A new "In the news" section on the October 2019 Coffy Bite relaunch press coverage.
+- **Certifications:** IVCA (cert. GVCSIN00051118) is now listed against Lotte Choco Pie. HALAL is shown only for Rohtak (valid to Mar 2028): the Chennai certificate on the live site expired on 19 Jul 2026, so its badge is hidden until a renewal is confirmed. The separate "Name Change" document has no details yet, so it is not shown.
+- **Careers:** Life at Lotte (training, celebrations, insurance, level-based perks), the equal-opportunity statement, the Darwinbox portal and careers@lotteindia.com.
+- **FAQ / contact:**
+  - The enquiry form now asks "I have a…" (Query / Suggestion / Feedback / Complaint).
+  - New FAQs on HR Services and a "Website & legal" summary.
+  - The careers email is listed.
+- **Footers:** official Instagram, Facebook, YouTube and LinkedIn links. Web Mail and the Employee Portal now point to mail.lotteindia.com and Darwinbox.
+
+Still TODO:
+- The X/Twitter link on the live site is a placeholder.
+- The enquiry form's country dropdown and file attachment are not mirrored yet.
+- Retailer links are search URLs, not the official listings.
+- The Chewits page heading says "Mango Toffee" while its copy describes coconut toffee — confirm with the brand team.
+
+## 7. Full site audit (21 Nov 2026)
+
+Run on the GitHub Pages production build, served locally under `/lotte-india/`, across all 8 routes plus the 404 page.
+
+Passed:
+- Type-check, lint with zero warnings, and production build (13/13 pages).
+- 116 internal links and every image resolve; the 404 page returns 404.
+- No console errors or failed requests on any page; the intro finishes everywhere.
+- Each page has one H1, a title, a meta description, `lang="en-IN"` and Open Graph tags.
+- Accessibility checks (in-page script): no unnamed links or buttons, no unlabelled form fields, no focusable elements inside `aria-hidden`, no positive tabindex, no heading skips, one `<main>` per page.
+- No horizontal scrolling at 375px on any page.
+- Code scan: external links all have `rel="noopener noreferrer"`, storage access is wrapped in try/catch, listeners and timers are cleaned up.
+- Interactions: FAQ accordion, enquiry form validation (6 errors, focus on first), Brands mega-menu with Esc, page transition under the base path, mobile menu.
+- Layout shift: about 0 on the homepage and Story.
+
+Fixed in this pass:
+- Homepage H1 had no spaces between its animated words ("ALittleCircleofJoy" to screen readers); it now has an explicit name.
+- `/classic` had duplicate SVG gradient ids (the same pack in the hero and the grid). `PackArt` takes an `idSuffix`, which the hero instances now pass.
+- The Coffy Bite card said "Live poll" over a seeded sample tally; it now says "Poll" (the results already say "Sample results").
+- Meta descriptions over 160 characters (site default, Brands, Reach) were shortened.
+- Small phone tap targets: the studio's "Pack details" button and "See the full portfolio" link.
+- Earlier the same day: the menu-bar wordmark failed to load locally (the dev image optimiser hung at 2x); the logo is now served unoptimised.
+
+Not covered or still open:
+- An automated axe-core scan (blocked in this environment); contrast was only checked on solid backgrounds, not gradients.
+- Load timings (LCP) can't be measured in the hidden preview pane; run Lighthouse on the live URL.
+- No canonical URLs (`metadataBase`) yet — add once the final domain is known.
+- Real-device checks: touch scrolling over the studio, and WebGL on low-end phones.

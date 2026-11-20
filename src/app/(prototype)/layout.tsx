@@ -3,7 +3,7 @@
 import { MotionConfig } from "motion/react";
 import type { ReactNode } from "react";
 import { ProtoFooter } from "@/components/prototype/ProtoFooter";
-import { ProtoNav } from "@/components/prototype/ProtoNav";
+import { SiteNav } from "@/components/layout/SiteNav";
 
 /**
  * Homepage chrome (3D homepage). `motion/react` has its own context, so reduced motion is configured here
@@ -13,7 +13,7 @@ export default function PrototypeLayout({ children }: { children: ReactNode }) {
   return (
     <MotionConfig reducedMotion="user">
       <div className="bg-proto-cream text-proto-cocoa">
-        <ProtoNav />
+        <SiteNav overlay />
         <main id="main" tabIndex={-1} className="outline-none">
           {children}
         </main>

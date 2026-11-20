@@ -58,7 +58,8 @@ export function ScaleMetrics({
   return (
     <section
       aria-labelledby="scale-title"
-      className={cn("relative overflow-hidden py-20 md:py-28", dark ? "mesh-signature grain text-white" : "bg-sand/60")}
+      data-nav-theme={dark ? "dark" : undefined}
+      className={cn("relative overflow-hidden py-20 md:py-28", dark ? "mesh-signature grain text-white" : "mesh-sand")}
     >
       <div className="container relative z-10">
         <div className="grid gap-6 md:grid-cols-12 md:items-end">

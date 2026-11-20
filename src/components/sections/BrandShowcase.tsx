@@ -165,7 +165,7 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void
         />
         {product.hasPoll && (
           <span className="absolute left-4 top-4 z-20 inline-flex items-center gap-1.5 rounded-full bg-noir px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-cream">
-            <Vote className="h-3 w-3" aria-hidden="true" /> Live poll
+            <Vote className="h-3 w-3" aria-hidden="true" /> Poll
           </span>
         )}
         {product.featured && !product.hasPoll && (

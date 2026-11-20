@@ -85,3 +85,17 @@ export const values: { title: string; tagline: string; body: string }[] = [
     body: "Functional, behavioural and leadership training that nurtures your talent towards your career goals.",
   },
 ];
+
+/** Life at Lotte & Career Philosophy (life-at-lotte.html, career-philosophy.html). */
+export const lifeAtLotte = {
+  philosophy:
+    "Our aim is to be a truly great company to work for — one that invests in the skills and leadership of its people.",
+  benefits: [
+    { title: "Training", body: "Functional, behavioural and leadership development." },
+    { title: "Celebrations", body: "Festivals, birthdays and milestones, celebrated together." },
+    { title: "Insurance", body: "Insurance cover for our people." },
+    { title: "Level-based perks", body: "Benefits that grow with your role." },
+  ],
+  equalOpportunity:
+    "Lotte India is an equal-opportunity employer and does not discriminate on any grounds.",
+};

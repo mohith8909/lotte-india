@@ -1,5 +1,7 @@
 // Answers from lotteindia.com/faq.html (lightly edited for readability, meaning unchanged).
 
+import { legalSummary } from "./company";
+
 export interface FaqItem {
   id: string;
   q: string;
@@ -61,9 +63,20 @@ export const faqGroups: FaqGroup[] = [
       {
         id: "apply",
         q: "How do I apply for a position at Lotte India?",
-        a: "Visit our careers page. Opportunities to grow with Lotte India are also posted on our LinkedIn page.",
+        a: "Visit our careers page. Opportunities to grow with Lotte India are also posted on our LinkedIn page, and you can send your CV to careers@lotteindia.com.",
         link: { href: "/careers", label: "Grow With Lotte" },
       },
+      {
+        id: "hr-services",
+        q: "I'm a current or former employee. How do I raise an HR query?",
+        a: "Use the HR Services form on lotteindia.com. It covers full & final settlement, gratuity, incentives, salary, company benefits, product-related issues and business-improvement ideas, for working, retired and resigned employees alike.",
+        link: { href: "https://www.lotteindia.com/hr-services.html", label: "HR Services form" },
+      },
     ],
+  },
+  {
+    id: "legal",
+    title: "Website & legal",
+    items: legalSummary.map((l) => ({ id: `legal-${l.title.toLowerCase().replace(/\W+/g, "-")}`, q: l.title, a: l.body })),
   },
 ];

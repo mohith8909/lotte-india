@@ -1,7 +1,4 @@
 // TODO: Replace with official Lotte India photography — drop pack shots into public/images/products/.
-"use client";
-
-import { useId } from "react";
 import type { Accent, PackShape } from "@/data/products";
 
 const palette: Record<Accent, { base: string; deep: string; light: string; ink: string }> = {
@@ -20,11 +17,17 @@ interface PackArtProps {
   accent: Accent;
   label: string;
   className?: string;
+  /** Makes SVG ids unique when the same pack appears twice on a page (e.g. hero + grid). */
+  idSuffix?: string;
 }
 
 /** Bespoke illustrated packaging silhouettes used as high-craft placeholders for product photography. */
-export function PackArt({ shape, accent, label, className }: PackArtProps) {
-  const uid = useId().replace(/:/g, "");
+export function PackArt({ shape, accent, label, className, idSuffix }: PackArtProps) {
+  // Deterministic gradient ids: the same on server and client, so hydration can never disagree
+  // (useId depends on the whole component tree and breaks if any ancestor renders differently).
+  // Pass `idSuffix` when a pack can appear twice on one page: duplicate ids are invalid, and if the first
+  // copy sits in a hidden (display: none) subtree, browsers can drop the gradients for the visible one.
+  const uid = `${shape}-${accent}-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}${idSuffix ? `-${idSuffix}` : ""}`;
   const c = palette[accent];
   const g = `g-${uid}`;
   const s = `s-${uid}`;

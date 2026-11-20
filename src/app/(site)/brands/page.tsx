@@ -7,7 +7,7 @@ import { ContactInquiry } from "@/components/sections/ContactInquiry";
 export const metadata: Metadata = {
   title: "Our Brands",
   description:
-    "Explore the full Lotte India portfolio — Choco Pie, Fruto Pie, Orange Pie, Coffy Bite, Lotte Eclairs, Caramilk, Lacto King, Fruitz, Chewits, Pepero, Coconut Punch, BooProo and Spout.",
+    "Explore the Lotte India portfolio: Choco Pie, Coffy Bite, Lotte Eclairs, Caramilk, Pepero, Lacto King, Fruitz, Chewits and more.",
 };
 
 export default function BrandsPage() {

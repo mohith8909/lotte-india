@@ -1,14 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Package, RotateCcw, RotateCw, Sparkles, X } from "lucide-react";
+import { ArrowUpRight, Package, RotateCcw, RotateCw, ShoppingBag, Sparkles, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { PackArt } from "@/components/brand/PackArt";
 import { LazyProductStage } from "@/components/three/Lazy3D";
 import { hasStage } from "@/components/three/stage";
 import { CoffyPoll } from "@/components/ui/CoffyPoll";
-import { categories, type Product } from "@/data/products";
+import { categories, retailers, type Product } from "@/data/products";
 import { accentStyles, cn } from "@/lib/cn";
 import { useDialog } from "@/lib/useDialog";
 
@@ -27,7 +27,7 @@ function VegMark() {
   );
 }
 
-/** Slide-over quick-view drawer with tasting notes, pack formats and (for Coffy Bite) a live poll. */
+/** Slide-over quick-view drawer with tasting notes, pack formats and (for Coffy Bite) a poll. */
 export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
   const open = product !== null;
   const panelRef = useDialog<HTMLDivElement>(open, onClose);
@@ -145,6 +145,35 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                 </div>
               )}
 
+              {(product.packs || product.pricePoints) && (
+                <dl className="grid gap-6 sm:grid-cols-2">
+                  {product.packs && (
+                    <div>
+                      <dt className="eyebrow !text-ink-muted">Pack sizes</dt>
+                      <dd className="mt-3 flex flex-wrap gap-2">
+                        {product.packs.map((n) => (
+                          <span key={n} className="rounded-full bg-sand px-3 py-1 text-sm tabular-nums">
+                            {n} pcs
+                          </span>
+                        ))}
+                      </dd>
+                    </div>
+                  )}
+                  {product.pricePoints && (
+                    <div>
+                      <dt className="eyebrow !text-ink-muted">Price points</dt>
+                      <dd className="mt-3 flex flex-wrap gap-2">
+                        {product.pricePoints.map((n) => (
+                          <span key={n} className="rounded-full bg-sand px-3 py-1 text-sm tabular-nums">
+                            {n}
+                          </span>
+                        ))}
+                      </dd>
+                    </div>
+                  )}
+                </dl>
+              )}
+
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="rounded-2xl bg-alabaster p-5 shadow-card">
                   <h3 className="flex items-center gap-2 font-sans text-sm font-semibold">
@@ -189,6 +218,29 @@ export function ProductDrawer({ product, onClose }: ProductDrawerProps) {
                   </Link>
                 </div>
               </div>
+
+              {product.category === "pies" && (
+                <div>
+                  <h3 className="flex items-center gap-2 font-sans text-sm font-semibold">
+                    <ShoppingBag className="h-4 w-4 text-lotte" aria-hidden="true" /> Where to buy
+                  </h3>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {retailers.map((r) => (
+                      <li key={r.name}>
+                        <a
+                          href={r.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full border border-noir/15 px-4 text-sm font-semibold transition hover:border-lotte hover:text-lotte-deep"
+                        >
+                          {r.name} <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                          <span className="sr-only">(opens in a new tab)</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {product.copyTodo && (
                 // TODO: Official copy needed — the current lotteindia.com page has no text for this brand.

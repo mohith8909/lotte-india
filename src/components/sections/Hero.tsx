@@ -206,7 +206,7 @@ export function Hero() {
                   paused={still}
                   fallback={
                     <div className="grid h-full place-items-center">
-                      <PackArt shape="pie" accent="noir" label="Lotte Choco Pie" className="w-[78%] drop-shadow-2xl" />
+                      <PackArt shape="pie" accent="noir" label="Lotte Choco Pie" idSuffix="hero" className="w-[78%] drop-shadow-2xl" />
                     </div>
                   }
                 />
@@ -231,7 +231,7 @@ export function Hero() {
             style={{ x: z(treatPX), y: z(treatY) }}
           >
             <div className={cn("animate-float [--float-r:12deg] motion-reduce:animate-none", paused && "[animation-play-state:paused]")}>
-              <PackArt shape="toffee" accent="lotte" label="Lotte Eclairs" className="h-20 w-20 drop-shadow-xl" />
+              <PackArt shape="toffee" accent="lotte" label="Lotte Eclairs" idSuffix="hero" className="h-20 w-20 drop-shadow-xl" />
             </div>
           </motion.div>
           <motion.div
@@ -319,7 +319,7 @@ function CoffeeToffeeBadge({
         <span className="sr-only">Is it a Coffee or a Toffee? Explore Coffy Bite.</span>
         <span aria-hidden="true" className="block">
           <span className="block origin-center transition-transform group-hover:animate-wiggle motion-reduce:group-hover:animate-none">
-            <PackArt shape="toffee" accent="coffee" label="Coffy Bite" className="mx-auto h-24 w-24" />
+            <PackArt shape="toffee" accent="coffee" label="Coffy Bite" idSuffix="hero" className="mx-auto h-24 w-24" />
           </span>
           <span className="mt-1 flex items-baseline justify-center gap-1 font-serif text-sm italic text-noir">
             Is it a

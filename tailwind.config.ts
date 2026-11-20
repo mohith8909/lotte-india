@@ -65,9 +65,10 @@ const config: Config = {
         eyebrow: "0.22em",
       },
       boxShadow: {
-        card: "0 1px 0 rgba(22,22,22,0.04), 0 12px 32px -12px rgba(22,22,22,0.14)",
-        lift: "0 2px 0 rgba(22,22,22,0.04), 0 28px 60px -20px rgba(22,22,22,0.28)",
-        glow: "0 24px 70px -24px rgba(231,52,55,0.5)",
+        // Layered, warm-tinted shadows (contact + mid + long ambient) read as real depth, not a grey halo.
+        card: "0 1px 1px rgba(45,24,14,0.05), 0 4px 10px -4px rgba(45,24,14,0.08), 0 22px 44px -18px rgba(45,24,14,0.22)",
+        lift: "0 2px 2px rgba(45,24,14,0.05), 0 10px 22px -8px rgba(45,24,14,0.14), 0 40px 70px -26px rgba(45,24,14,0.38)",
+        glow: "0 4px 10px -4px rgba(150,14,20,0.35), 0 30px 70px -24px rgba(214,39,44,0.6)",
         pill: "0 1px 0 rgba(255,255,255,0.7) inset, 0 6px 20px -12px rgba(22,22,22,0.18)",
         "pill-lg": "0 1px 0 rgba(255,255,255,0.7) inset, 0 18px 40px -18px rgba(22,22,22,0.35), 0 2px 6px rgba(22,22,22,0.05)",
       },

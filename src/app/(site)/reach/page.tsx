@@ -9,7 +9,7 @@ import { reachMetrics } from "@/data/milestones";
 export const metadata: Metadata = {
   title: "Manufacturing & Reach",
   description:
-    "Two fully automated Choco Pie facilities in Chennai and Rohtak, our own confectionery unit in Nellikuppam, and a network of 26 C&F agencies and 2,000+ distributors reaching over a million retail outlets.",
+    "Choco Pie plants in Chennai and Rohtak, a confectionery unit in Nellikuppam, and 2,000+ distributors reaching over a million retail outlets.",
 };
 
 export default function ReachPage() {

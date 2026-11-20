@@ -16,6 +16,8 @@ interface LotteMarkProps {
   priority?: boolean;
 }
 
+// Served as-is (`unoptimized`): the PNGs are a few KB, and the dev image optimiser hung on the wide,
+// short wordmark at 2x (w=640), leaving a broken logo on high-DPI screens.
 export function LotteMark({ className, tone = "dark", markOnly = false, priority = false }: LotteMarkProps) {
   return (
     <span className={cn("inline-flex items-center gap-3", className)}>
@@ -25,6 +27,7 @@ export function LotteMark({ className, tone = "dark", markOnly = false, priority
         width={72}
         height={71}
         priority={priority}
+        unoptimized
         className="h-10 w-10 shrink-0"
       />
       {!markOnly && (
@@ -34,6 +37,7 @@ export function LotteMark({ className, tone = "dark", markOnly = false, priority
           width={240}
           height={25}
           priority={priority}
+          unoptimized
           className="h-[15px] w-auto"
         />
       )}

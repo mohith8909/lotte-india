@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { BrandGlyph } from "@/components/brand/BrandGlyph";
 import { LotteMark } from "@/components/brand/LotteMark";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import { companyName, utilityLinks } from "@/data/disclosures";
 import { hubs } from "@/data/milestones";
 
@@ -37,7 +38,7 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="mesh-noir grain relative overflow-hidden text-alabaster">
+    <footer data-nav-theme="dark" className="mesh-noir grain relative overflow-hidden text-alabaster">
       <BrandGlyph
         filled={false}
         className="pointer-events-none absolute -bottom-40 -right-32 h-[34rem] w-[34rem] text-lotte/15"
@@ -52,8 +53,9 @@ export function Footer() {
             <address className="mt-8 space-y-1 text-sm not-italic text-alabaster/60">
               <p className="text-alabaster/85">{companyName}</p>
               <p>Chennai, Tamil Nadu, India</p>
-              {/* TODO: Add registered office address, CIN and contact numbers from official records */}
+              {/* TODO: Add registered office address and CIN from official records */}
             </address>
+            <SocialLinks className="mt-8" />
           </div>
 
           <nav aria-label="Footer" className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7">
@@ -106,7 +108,7 @@ export function Footer() {
           </p>
           <ul className="flex gap-6">
             <li>
-              <Link href="/investors#disclosures" className="hover:text-alabaster">
+              <Link href="/faq#legal" className="hover:text-alabaster">
                 Legal
               </Link>
             </li>

@@ -17,12 +17,16 @@ const inquiryTypes = [
   "Others",
 ] as const;
 
+// Mirrors the "Do you have a" options on the same form.
+const inquiryNatures = ["Query", "Suggestion / Feedback", "Complaint"] as const;
+
 interface FormState {
   name: string;
   email: string;
   phone: string;
   company: string;
   type: (typeof inquiryTypes)[number] | "";
+  nature: (typeof inquiryNatures)[number] | "";
   city: string;
   message: string;
   consent: boolean;
@@ -36,6 +40,7 @@ const initial: FormState = {
   phone: "",
   company: "",
   type: "",
+  nature: "",
   city: "",
   message: "",
   consent: false,
@@ -48,6 +53,7 @@ export function validateInquiry(v: FormState): Errors {
   if (v.phone && !/^(\+91[\s-]?)?[6-9]\d{9}$/.test(v.phone.replace(/\s/g, "")))
     e.phone = "Enter a valid 10-digit Indian mobile number.";
   if (!v.type) e.type = "Tell us who you are so we can route your enquiry.";
+  if (!v.nature) e.nature = "Choose whether this is a query, feedback or a complaint.";
   if (v.type === "Distributor / Retailer" && v.city.trim().length < 2) e.city = "Tell us the city or region you serve.";
   if (v.message.trim().length < 20) e.message = "Please share a little more (at least 20 characters).";
   if (!v.consent) e.consent = "Please agree so we can contact you.";
@@ -124,11 +130,11 @@ export function ContactInquiry() {
         <div className="lg:col-span-5">
           <p className="eyebrow">Partner with us</p>
           <h2 id="inquiry-title" className="mt-4 text-display-md font-light text-balance">
-            <MaskText>Corporate &amp; <em className="italic text-lotte">distributor</em> inquiries.</MaskText>
+            <MaskText>Queries, feedback &amp; <em className="italic text-lotte">partnerships</em>.</MaskText>
           </h2>
           <p className="mt-6 max-w-md text-ink-soft">
-            Whether you want to carry our brands in your region, order for an occasion or reach our investor relations
-            team, drop in your details and we will get in touch with you shortly.
+            Consumers, distributors, suppliers, institutional buyers, importers and contract manufacturers — tell us
+            who you are and whether you have a query, feedback or a complaint, and we will get in touch shortly.
           </p>
           <dl className="mt-10 space-y-5 border-t hairline pt-8 text-sm">
             <div>
@@ -231,6 +237,25 @@ export function ContactInquiry() {
                   <FieldError k="type" />
                 </div>
                 <div>
+                  <Label k="nature">I have a</Label>
+                  <select
+                    {...field("nature")}
+                    className={cn("field appearance-none", !values.nature && "text-ink-muted")}
+                    value={values.nature}
+                    onChange={(e) => set("nature", e.target.value as FormState["nature"])}
+                  >
+                    <option value="" disabled>
+                      Select one
+                    </option>
+                    {inquiryNatures.map((t) => (
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                  <FieldError k="nature" />
+                </div>
+                <div className="sm:col-span-2">
                   <Label k="city" optional={values.type !== "Distributor / Retailer"}>
                     City / region
                   </Label>
