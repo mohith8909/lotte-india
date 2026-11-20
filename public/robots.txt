@@ -1,0 +1,3 @@
+# Concept redesign preview — not the official Lotte India website.
+User-agent: *
+Disallow: /
